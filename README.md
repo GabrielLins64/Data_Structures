@@ -1,4 +1,4 @@
-Repository for algorithms and data structures in C
+<b>Repository for algorithms and data structures in C</b>
 
 References:
 
