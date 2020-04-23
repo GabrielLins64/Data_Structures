@@ -1,2 +1,9 @@
-*.swp
-*.o
+# Ignore all files
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
