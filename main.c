@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[]) {
 	// test_sine();
-	// test_fibo();
+	test_fibo();
 	
 
 	return 0;
