@@ -14,11 +14,15 @@
 unsigned int factorial(unsigned int n);
 double sine_taylor(double x, double n);
 unsigned int fibonacci(unsigned int n);
+int binomial_coefficient(int n, int k);
+int min(int a, int b);
 
 // test.c
 double get_value(char *value_name);
 void func_head(char *func, char *quit_v, char *quit_n);
 void test_sine();
 void test_fibo();
+void test_bc();
+void pascal_triangle();
 
 #endif

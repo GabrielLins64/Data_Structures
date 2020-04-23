@@ -32,7 +32,7 @@ void func_head(char *func, char *quit_v, char *quit_n) {
 // double sine_taylor(double, double) test:
 void test_sine() {
 	func_head("sine_taylor", "404", "theta");
-	int precision = (int)get_value("precision (int)");
+	int precision = (int) get_value("precision (int)");
 	double theta = get_value("theta (radian)");
 	while(theta != 404.0){
 		double r = sine_taylor(theta, precision);
@@ -44,11 +44,40 @@ void test_sine() {
 // unsigned int fibonacci(unsigned int) test:
 void test_fibo() {
 	func_head("fibonacci", "-1", "n");
-	unsigned int n = (unsigned int)get_value("n");
+	unsigned int n = (unsigned int) get_value("n");
 	while(n != -1) {
 		unsigned int fibo = fibonacci(n);
 		printf("fibo(%u) = %u\n", n, fibo);
 		n = (unsigned int)get_value("n");
+	}
+}
+
+// int binomial_coefficient(int, int) test:
+void test_bc() {
+	func_head("binomial_coefficient", "-1", "n\" or \"j");
+	int n = (int) get_value("n");
+	int k = (int) get_value("k");
+	while((n != -1) && (k != -1)) {
+		int c = binomial_coefficient(n, k);
+		printf("C(%d, %d) = %d\n", n, k, c);
+		n = (int) get_value("n");
+		k = (int) get_value("k");		
+	}
+}
+
+// void print a pascal triange of size n:
+void pascal_triangle() {
+	func_head("pascal_triangle", "-1", "n");
+	int n = (int) get_value("n");
+	while(n != -1) {
+		int i, j;
+		for(i = 0; i < n; i++) {
+			for(j = 0; j <= i; j++) {
+				printf("%d  ", binomial_coefficient(i, j));
+			}
+			printf("\n");
+		}
+		n = (int) get_value("n");
 	}
 }
 
