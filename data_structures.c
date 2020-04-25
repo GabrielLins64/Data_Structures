@@ -57,38 +57,73 @@ pt_node list_search(pt_node head, t_elem f_elem) {
 // Parameters:
 // 		pt_node head: head of the list
 void list_print(pt_node head) {
-	if(head == NULL) return;
+	if(head == NULL) {
+		printf("[]\n");
+		return;
+	}
 	pt_node node;
 	printf("[");
 	for(node = head; node != NULL; node = node->next)
-		if(node->next != NULL) print("%d, ", *node->elem)
+		if(node->next != NULL) printf("%d, ", *node->elem);
 		else printf("%d]\n", *node->elem);
 }
 
 // Inserd a node in a ordered way
 // Parameters:
-// 		pt_node *head: pointer to the head of the list
+// 		pt_node *head: pointer to the head of the list. Must be used with: list_insert(&head, elem)
 // 		t_elem elem: element of the node to be inserted.
 void list_insert(pt_node *head, t_elem elem) {
-	pt_node ins, prev = NULL, actual = *head;
+	pt_node ins, prev = NULL, actual = *head; 
 	if( (ins = node_create(elem)) == NULL ) return;
 	// While isn't in the end of the list or the elem to be inserted is bigger than the current element in list
 	// move forward.
-	while (actual != NULL && elem > *actual->elem ) { 
+	while (actual != NULL && elem > *actual->elem ) { // precedence: ->, *
 		prev = actual; 
 		actual = actual->next;
 	}
 	// this "if" happends when elem < *head->elem (first element), or when there is no elements in the list.
 	if(prev == NULL) {
 		ins->next = *head; // new node starts pointing to the old head VALUE (this VALUE isn't a reference)
-		*head = ins; // and the new node become the new head. (Value of the node head, that has been passed by reference)
-	}
-	else { // if it's after the first element (even if it is the last).
+		*head = ins; // head starts pointing to ins (this one becomes the new head).
+	} else { // if it's after the first element (even if it is the last).
 		ins->next = actual;
 		prev->next = ins;
 	}
 }
 
+// Remove a node of the list (with linear search)
+// Parameters:
+// 		pt_node *head: pointer to the head of the list
+// 		t_elem elem: element of the node to be removed
+void list_remove(pt_node *head, t_elem elem) {
+	pt_node prev = NULL, actual = *head;
+	if(actual == NULL) return;
+	if(elem == *actual->elem) { // If the element to be removed is in the first node (head).
+		*head = (*head)->next;
+		node_destroy(&actual);
+	} else {
+		while(actual != NULL && elem != *actual->elem) {
+			prev = actual;
+			actual = actual->next;
+		}
+		if(actual != NULL) { // If actual == NULL, the search has reached the end of the list (elem isn't there).
+			prev->next = actual->next;
+			node_destroy(&actual);
+		}
+	}
+}
 
+// Destroys the list
+// Parameters:
+// 		pt_node *head: pointer to the head of the list
+void list_destroy(pt_node *head) {
+	pt_node node;
+	while(*head != NULL) {
+		node = *head;
+		*head = (*head)->next;
+		node_destroy(&node);
+	}
+	printf("Memory cleared successfully!\n");
+}
 
 // ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~
