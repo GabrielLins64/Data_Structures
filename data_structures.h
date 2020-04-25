@@ -17,6 +17,12 @@ unsigned int fibonacci(unsigned int n);
 int binomial_coefficient(int n, int k);
 int min(int a, int b);
 
+// data_structures.c
+typedef int t_elem;
+typedef struct _node *pt_node;
+pt_node node_create(t_elem elem);
+void node_destroy(pt_node *dnode);
+
 // test.c
 double get_value(char *value_name);
 void func_head(char *func, char *quit_v, char *quit_n);
