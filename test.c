@@ -1,7 +1,8 @@
 // This file contains some input/output and testing functions for the algorithms and data_structures of
 // the other files.
 #include "data_structures.h"
-#include <stdio.h>
+#include <stdio.h> // printf() e scanf()
+#include <stdlib.h> // system()
 
 // ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~
 // Input / Output functions:
@@ -83,3 +84,65 @@ void pascal_triangle() {
 
 // ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~
 // Test functions for data_structures.c
+
+void clear_screen() {system(CLRSCR);}
+void press_enter() {
+	printf ( "Press enter to continue..." );
+	getchar();
+	fflush ( stdout );
+	getchar();
+}
+
+void print_list_menu(pt_node head) {
+	clear_screen();
+	printf("----- List test menu -----\n\n");
+	printf("Your list: "); list_print(head);
+	printf("\n\n1. Insert element.\n");
+	printf("2. Remove element.\n");
+	printf("3. Search in list.\n");
+	printf("4. Destroy list.\n");
+	printf("5. Quit.\n\n");
+	printf("Choose an option (number): ");
+}
+
+// Manage a list:
+void test_list() {
+	pt_node head = NULL;
+	print_list_menu(head);
+	int option;
+	scanf("%d", &option);
+	while(option != 5) {
+		t_elem elem;
+		switch(option) {
+			case 1:
+				printf("Enter a element to insert: "); scanf(T_ELEM_FORMAT, &elem);
+				list_insert(&head, elem);
+				break;
+			case 2:
+				printf("Enter a element to remove: "); scanf(T_ELEM_FORMAT, &elem);
+				list_remove(&head, elem);
+				break;
+			case 3:
+				printf("Enter a element to search: "); scanf(T_ELEM_FORMAT, &elem);
+				if(list_search(head, elem) == NULL) {
+					printf("The element is not in the list!\n");
+					press_enter();
+				} else {
+					printf("The element is in the list!\n");
+					press_enter();
+				}
+				break;
+			case 4:
+				list_destroy(&head);
+			case 5:
+				break;
+			default:
+				printf("Unknown option!\n");
+				press_enter();
+		}
+		print_list_menu(head);
+		scanf("%d", &option);
+	}
+	list_destroy(&head);
+	clear_screen();
+}
