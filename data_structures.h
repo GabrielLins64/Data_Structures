@@ -19,7 +19,11 @@ int min(int a, int b);
 
 // data_structures.c
 typedef int t_elem;
-typedef struct _node *pt_node;
+typedef struct _node *pt_node; // defines pt_node as a pointer to _node.
+// You may wonder why the asterisk is "sticking" to pt_node here. That's because in C 
+// declarations, being a pointer is considered a type modifier, so in a declaration, it's 
+// part of the declarator (the identifier of the variable or typedef 'd type).
+// In summary, the call: "pt_node x" it's equivalent to "_node *x"
 pt_node node_create(t_elem elem);
 void node_destroy(pt_node *dnode);
 
