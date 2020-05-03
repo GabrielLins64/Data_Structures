@@ -98,10 +98,13 @@ void print_list_menu(pt_node head) {
 	printf("----- List test menu -----\n\n");
 	printf("Your list: "); list_print(head);
 	printf("\n\n1. Insert element.\n");
-	printf("2. Remove element.\n");
-	printf("3. Search in list.\n");
-	printf("4. Destroy list.\n");
-	printf("5. Quit.\n\n");
+	printf("2. Remove element by value.\n");
+	printf("3. Remove element by position.\n");
+	printf("4. Search in list.\n");
+	printf("5. Get element from position.\n");
+	printf("6. Get list size.\n");
+	printf("7. Destroy list.\n");
+	printf("8. Quit.\n\n");
 	printf("Choose an option (number): ");
 }
 
@@ -111,8 +114,9 @@ void test_list() {
 	print_list_menu(head);
 	int option;
 	scanf("%d", &option);
-	while(option != 5) {
+	while(1) {
 		t_elem elem;
+		int position;
 		switch(option) {
 			case 1:
 				printf("Enter a element to insert: "); scanf(T_ELEM_FORMAT, &elem);
@@ -123,6 +127,15 @@ void test_list() {
 				list_remove(&head, elem);
 				break;
 			case 3:
+			printf("Enter the position: "); scanf("%d", &position);
+				if(exists_position(&head, position)) {
+					remove_position(&head, position);
+				} else {
+					printf("There is no such position in this list!\n");
+					press_enter();
+				}
+				break;
+			case 4:
 				printf("Enter a element to search: "); scanf(T_ELEM_FORMAT, &elem);
 				if(list_search(head, elem) == NULL) {
 					printf("The element is not in the list!\n");
@@ -132,10 +145,29 @@ void test_list() {
 					press_enter();
 				}
 				break;
-			case 4:
-				list_destroy(&head);
 			case 5:
+				printf("Enter the position: "); scanf("%d", &position);
+				if(exists_position(&head, position)) {
+					printf("The element in position %d is: ", position);
+					printf(T_ELEM_FORMAT, get_element(&head, position));
+					printf(".\n");
+					press_enter();
+				} else {
+					printf("There is no such position in this list!\n");
+					press_enter();
+				}
 				break;
+			case 6:
+				printf("List size is %d.\n", list_size(&head));
+				press_enter();
+				break;
+			case 7:
+				list_destroy(&head);
+				break;
+			case 8:
+				list_destroy(&head);
+				clear_screen();
+				exit(0);
 			default:
 				printf("Unknown option!\n");
 				press_enter();

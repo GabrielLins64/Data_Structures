@@ -40,6 +40,10 @@ pt_node list_search(pt_node head, t_elem f_elem);
 void list_print(pt_node head);
 void list_insert(pt_node *head, t_elem elem);
 void list_remove(pt_node *head, t_elem elem);
+void remove_position(pt_node *head, int position);
+int list_size(pt_node *head);
+int exists_position(pt_node *head, int position);
+t_elem get_element(pt_node *head, int position);
 void list_destroy(pt_node *head);
 
 // ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~

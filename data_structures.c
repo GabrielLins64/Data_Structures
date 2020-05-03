@@ -63,8 +63,14 @@ void list_print(pt_node head) {
 	pt_node node;
 	printf("[");
 	for(node = head; node != NULL; node = node->next)
-		if(node->next != NULL) printf("%d, ", *node->elem);
-		else printf("%d]\n", *node->elem);
+		if(node->next != NULL) {
+			printf(T_ELEM_FORMAT, *node->elem);
+			printf(", ");
+		}
+		else {
+			printf(T_ELEM_FORMAT, *node->elem);
+			printf("]\n");
+		}
 }
 
 // Inserd a node in a ordered way
@@ -110,6 +116,41 @@ void list_remove(pt_node *head, t_elem elem) {
 			node_destroy(&actual);
 		}
 	}
+}
+
+// Remove a node in list, by position
+void remove_position(pt_node *head, int position) {
+	pt_node prev = NULL, actual = *head;
+	int index;
+	if(index==0) {
+		*head = (*head)->next;
+		node_destroy(&actual);
+	} else {
+		for(index = 0; index != position; index++, prev = actual, actual = actual->next);
+		prev->next = actual->next;
+		node_destroy(&actual);
+	}
+}
+
+// Returns list size
+int list_size(pt_node *head) {
+	int size = 0;
+	pt_node actual;
+	for(actual = *head; actual != NULL; size++, actual = actual->next);
+	return size;
+}
+
+// Returns true if there is a "position" in the list
+int exists_position(pt_node *head, int position) {
+	return ( ((position + 1 <= list_size(head)) && (position >= 0)) ? 1 : 0 );
+}
+
+// Returns element in position
+t_elem get_element(pt_node *head, int position) {
+	pt_node actual;
+	int index;
+	for(actual = *head, index = 0; index != position; actual = actual->next, index++);
+	return *actual->elem;
 }
 
 // Destroys the list
