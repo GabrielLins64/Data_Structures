@@ -5,6 +5,9 @@
 // including it, with the C preprocessing directive ‘#include’.
 // From: https://gcc.gnu.org/onlinedocs/cpp/Header-Files.html
 
+// ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~
+// Definitions:
+
 #ifndef DATA_STRUCTURES_H // #ifndef and #define are called #include guards.
 #define DATA_STRUCTURES_H // They prevents double declaration of any identifiers such as types, enums and static variables.
 
@@ -13,6 +16,8 @@
 // #define CLRSCR "cls" // Clear screen shell command for Windows
 #define T_ELEM_FORMAT "%d" // Used for generics scanf's and printf's
 
+// ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~
+
 // algorithms.c
 unsigned int factorial(unsigned int n);
 double sine_taylor(double x, double n);
@@ -20,7 +25,9 @@ unsigned int fibonacci(unsigned int n);
 int binomial_coefficient(int n, int k);
 int min(int a, int b);
 
+// ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~
 // data_structures.c
+
 typedef int t_elem; // t_elem can be modified here. Should also modify the define T_ELEM_FORMAT.
 typedef struct _node *pt_node; // defines pt_node as a pointer to _node.
 // You may wonder why the asterisk is "sticking" to pt_node here. That's because in C 
@@ -35,7 +42,9 @@ void list_insert(pt_node *head, t_elem elem);
 void list_remove(pt_node *head, t_elem elem);
 void list_destroy(pt_node *head);
 
+// ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~
 // test.c
+
 double get_value(char *value_name);
 void func_head(char *func, char *quit_v, char *quit_n);
 void test_sine();

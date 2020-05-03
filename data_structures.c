@@ -10,10 +10,9 @@
 // typedef int t_elem; // Present in data_structures.h. Should be modified there.
 
 // ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~
-// Lists
-
 // Simple lists:
 // typedef struct _node *pt_node; // present in data_structures.h
+
 struct _node {
 	t_elem *elem; // Element of the node
 	pt_node next; // Pointer to the next node.
