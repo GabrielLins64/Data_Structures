@@ -1,11 +1,6 @@
-# Ignore all files
-*
+# Build files
+bin
+obj
 
-# Unignore all with extensions
-!*.*
-
-# Unignore all dirs
-!*/
-
-# Ignore a test src for pointers
-ctest.c
+# Books and PDFs
+books
