@@ -83,7 +83,7 @@ Uma árvore AVL é uma árvore sempre balanceada. Isto é, as alturas das subár
 
 Para isto ser possível, suas operações de inserção e exclusão são realizadas com rotinas de balanceamento.
 
-**Fator de balanceamento (equilíbrio) de um nó**: É a altura da sub-árvore da esquerda h<sub>e</sub> subtraída da sub-árvore da direita h<sub>d</sub>. Ou seja: $ h_d - h_e $
+**Fator de balanceamento (equilíbrio) de um nó**: É a altura da sub-árvore da esquerda h<sub>e</sub> subtraída da sub-árvore da direita h<sub>d</sub>. Ou seja: $$ h_d - h_e $$
 
 ---
 
