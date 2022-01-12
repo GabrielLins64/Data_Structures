@@ -1,6 +1,25 @@
-<b>Repository for algorithms and data structures in C</b>
+<h1>Algorithms and Data Structures in C</h1>
 
-References:
+Theory and practice study of Algorithms and Data Structures in C.
 
-ROCHA, A., <i>Estruturas de Dados e Algoritmos em C</i>.
+---
+
+<h2>Index</h2>
+
+- [Requirements](#requirements)
+- [Compilation](#compilation)
+- [Project Structure](#project-structure)
+- [References](#references)
+
+---
+
+# Requirements
+
+# Compilation
+
+# Project Structure
+
+# References
+
+ROCHA, A., *Estruturas de Dados e Algoritmos em C*.
 3rd ed. Lisboa: FCA, 2014.
