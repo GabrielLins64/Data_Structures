@@ -16,6 +16,11 @@
       - [Como decidir as rotações:](#como-decidir-as-rotações)
     - [Complexidade](#complexidade)
   - [Árvore Rubro-Negra](#árvore-rubro-negra)
+    - [História](#história)
+    - [Definição](#definição)
+    - [Implementação](#implementação)
+    - [Complexidade](#complexidade-1)
+    - [Aplicações](#aplicações)
 
 ---
 
@@ -237,4 +242,43 @@ A árvore AVL tem complexidade O(log *n*) para todas operações e ocupa espaço
 
 ### Árvore Rubro-Negra
 
+#### História
 
+Em 1972, Rudolf Bayer inventou uma estrutura de dados que era um caso especial de ordem 4 de uma árvore B. Essas árvores mantinham todos os caminhos da raiz à folha com o mesmo número de nós, criando árvores perfeitamente equilibradas. No entanto, eles não eram árvores de busca binárias. A Bayer os chamou de "árvore B binária simétrica". Então, em um artigo de 1978, "A Dichromatic Framework for Balanced Trees", Leonidas J. Guibas e Robert Sedgewick derivaram a árvore vermelho-preta da árvore B binária simétrica. A cor "vermelho" foi escolhida porque era a cor mais bonita produzida pela impressora a laser colorida disponível para os autores enquanto trabalhavam na Xerox PARC. Outra resposta de Guibas afirma que foi por causa das canetas vermelhas e pretas de que dispunham para desenhar as árvores.
+
+#### Definição
+
+> Uma árvore rubro-negra é um tipo de árvore binária de busca auto-balanceável que adere um conjunto estrito de regras para manter uma complexidade temporal logarítmica.
+
+No nível mais básico, as árvores vermelho-preta devem seguir 4 regras para poder manter suas propriedades:
+
+1. Cada nó deve ser vermelho ou preto.
+
+2. A raiz é sempre preta.
+
+3. Dois nós vermelhos nunca aparecem consecutivamente. Isto é, um nó vermelho sempre deve ter um nó-pai preto.
+
+4. Todos os caminhos do nó raiz até uma folha devem passar pelo exato mesmo número de nós pretos.
+
+Geralmente também é considerada uma quinta regra adicional:
+
+5. Todos os nós folhas são pretos.
+
+#### Implementação
+
+Uma árvore rubro-negra pode ser representada por uma árvore de busca binária auto-balanceável onde cada nó possui um bit extra que é interpretado como a cor do nó (vermelho ou preto).
+
+É de demonstração conhecida que não se faz possível uma cadeia (sequência) de 3 nós para um lado apenas em uma árvore rubro-negra. A partir disso, podemos derivar operações que garantem o balanceamento da árvore.
+
+#### Complexidade
+
+A complexidade temporal de pior caso de uma árvore rubro-negra, para quaisquer operações (busca, inserção, deleção, máximo, mínimo...), é **O(log n)**.
+
+#### Aplicações
+
+1. A maioria das funções da biblioteca BST de auto-equilíbrio, como map e set em C++ (OR TreeSet e TreeMap em Java), usam Red-Black Tree.
+2. A implementação do [Completely Fair Scheduler](https://en.wikipedia.org/wiki/Completely_Fair_Scheduler) (escalonador de processos do Linux) utiliza a Red-Black Tree como estrutura de dados para gerenciar as prioridades dos processos.
+3. MySQL usa árvores Red-Black para armazenar os índices em tabelas.
+4. São também utilizadas nos algoritmos de clusterização por k-means.
+
+---
