@@ -1,6 +1,9 @@
 # Build files
 bin
-obj
+build
 
 # Books and PDFs
 books
+
+# Tests
+tests
