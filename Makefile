@@ -1,6 +1,7 @@
 # Compiler / Linker configs
 CC        := gcc
 CC_TEST   := g++
+TEST_FLAGS:= -std=c++11
 CC_FLAGS  := -c         \
              -W         \
 
@@ -33,7 +34,7 @@ $(TARGET): $(OBJ)
 
 $(TEST_TARGET):
 	@echo "🚀 Building test binary \"$@\" using G++ linker..."
-	@$(CC_TEST) $(TESTS_DIR)/*.cpp -o $(BIN_DIR)/$@
+	@$(CC_TEST) $(TEST_FLAGS) $(TESTS_DIR)/*.cpp -o $(BIN_DIR)/$@
 	@echo "🎇 Build complete!"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
